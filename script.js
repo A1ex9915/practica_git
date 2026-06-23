@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('form-contacto');
 
   mostrarMensajeAutor();
+  animarHero();
+  animarTarjetas();
+  agregarEfectoParallax();
+  animarBadge();
 
   if (!form) return;
 
@@ -51,6 +55,91 @@ document.addEventListener('DOMContentLoaded', () => {
     form.reset();
   });
 });
+
+function animarHero() {
+  const title = document.querySelector('.hero h1');
+  const text = document.querySelector('.hero p');
+  const button = document.querySelector('.hero .btn');
+
+  if (title) {
+    title.style.opacity = '0';
+    title.style.transform = 'translateY(24px)';
+    requestAnimationFrame(() => {
+      title.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      title.style.opacity = '1';
+      title.style.transform = 'translateY(0)';
+    });
+  }
+
+  if (text) {
+    text.style.opacity = '0';
+    text.style.transform = 'translateY(18px)';
+    setTimeout(() => {
+      text.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      text.style.opacity = '1';
+      text.style.transform = 'translateY(0)';
+    }, 180);
+  }
+
+  if (button) {
+    button.style.opacity = '0';
+    button.style.transform = 'translateY(20px) scale(0.96)';
+    setTimeout(() => {
+      button.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      button.style.opacity = '1';
+      button.style.transform = 'translateY(0) scale(1)';
+    }, 320);
+  }
+}
+
+function animarTarjetas() {
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(28px) scale(0.95)';
+
+    setTimeout(() => {
+      card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0) scale(1)';
+    }, 120 * (index + 1));
+  });
+}
+
+function agregarEfectoParallax() {
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach((card) => {
+    card.addEventListener('mousemove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 8;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 8;
+
+      card.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
+      card.style.transition = 'transform 0.15s ease-out';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.4s ease';
+    });
+  });
+}
+
+function animarBadge() {
+  const badge = document.querySelector('.autor-badge');
+  if (!badge) return;
+
+  badge.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
+  let creciendo = true;
+
+  setInterval(() => {
+    badge.style.transform = creciendo ? 'scale(1.04)' : 'scale(1)';
+    badge.style.boxShadow = creciendo ? '0 0 18px rgba(56, 189, 248, 0.25)' : 'none';
+    creciendo = !creciendo;
+  }, 1200);
+}
 
 function mostrarMensajeAutor() {
   const hero = document.querySelector('.hero');
