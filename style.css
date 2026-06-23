@@ -1,14 +1,24 @@
+:root {
+  --color-primario: #0f172a;
+  --color-acento: #38bdf8;
+  --color-fondo: #1e293b;
+  --color-texto: #e2e8f0;
+  --fuente-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --radio-borde: 8px;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--fuente-base);
 }
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a, #1e293b, #312e81);
-  color: white;
+  background: linear-gradient(135deg, var(--color-primario), var(--color-fondo), #312e81);
+  color: var(--color-texto);
   overflow-x: hidden;
 }
 
@@ -26,11 +36,11 @@ header {
 }
 
 .logo span {
-  color: #38bdf8;
+  color: var(--color-acento);
 }
 
 nav a {
-  color: white;
+  color: var(--color-texto);
   text-decoration: none;
   margin-left: 25px;
   font-weight: 500;
@@ -38,7 +48,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #38bdf8;
+  color: var(--color-acento);
 }
 
 .hero {
@@ -53,7 +63,7 @@ nav a:hover {
 }
 
 .hero h1 span {
-  color: #38bdf8;
+  color: var(--color-acento);
 }
 
 .hero p {
@@ -70,13 +80,13 @@ nav a:hover {
   padding: 14px 35px;
   border: none;
   border-radius: 30px;
-  background: #38bdf8;
-  color: #0f172a;
+  background: var(--color-acento);
+  color: var(--color-primario);
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  box-shadow: var(--sombra);
 }
 
 .btn:hover {
@@ -108,7 +118,7 @@ nav a:hover {
   position: absolute;
   width: 120px;
   height: 120px;
-  background: #38bdf8;
+  background: var(--color-acento);
   border-radius: 50%;
   top: -40px;
   right: -40px;
@@ -124,7 +134,7 @@ nav a:hover {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  background: linear-gradient(135deg, var(--color-acento), #818cf8);
   margin: 0 auto 20px;
   display: flex;
   align-items: center;
@@ -141,7 +151,7 @@ nav a:hover {
 }
 
 .role {
-  color: #38bdf8;
+  color: var(--color-acento);
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -232,5 +242,13 @@ footer {
 
   .hero p {
     font-size: 17px;
+  }
+
+  .team-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proyecto-card {
+    flex-direction: column;
   }
 }
