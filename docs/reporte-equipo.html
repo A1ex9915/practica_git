@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Equipo — Práctica de Cierre Unidad II</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      color: #1a1a1a;
+      background: white;
+      line-height: 1.55;
+    }
+
+    /* ── Página ── */
+    .page {
+      width: 21cm;
+      min-height: 29.7cm;
+      margin: 0 auto 20px;
+      padding: 2cm 2.2cm;
+      background: white;
+      box-shadow: 0 0 8px rgba(0,0,0,0.12);
+    }
+
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none; margin: 0; padding: 1.8cm 2cm; page-break-after: always; }
+      .page:last-child { page-break-after: avoid; }
+      .no-print { display: none; }
+    }
+
+    /* ── Portada ── */
+    .portada {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 26cm;
+      gap: 0;
+    }
+
+    .inst-header {
+      border-top: 4px solid #1f3864;
+      border-bottom: 1px solid #2e75b6;
+      padding: 14px 0;
+      width: 100%;
+      margin-bottom: 60px;
+    }
+
+    .inst-header p { font-size: 10pt; color: #444; }
+    .inst-header strong { font-size: 11pt; color: #1f3864; }
+
+    .portada h1 {
+      font-size: 30pt;
+      color: #1f3864;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .portada h2 {
+      font-size: 16pt;
+      color: #2e75b6;
+      font-weight: 600;
+      margin-bottom: 50px;
+    }
+
+    .ficha {
+      border: 1px solid #c5d5e8;
+      border-radius: 6px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 50px;
+    }
+
+    .ficha table { width: 100%; border-collapse: collapse; }
+    .ficha td { padding: 9px 14px; font-size: 10.5pt; border-bottom: 1px solid #e0e8f0; }
+    .ficha td:first-child { background: #1f3864; color: white; font-weight: 600; width: 38%; }
+    .ficha tr:last-child td { border-bottom: none; }
+
+    .integrantes { width: 100%; margin-bottom: 50px; }
+    .integrantes table { width: 100%; border-collapse: collapse; }
+    .integrantes th {
+      background: #1f3864; color: white;
+      padding: 9px 12px; font-size: 10pt;
+    }
+    .integrantes td {
+      padding: 8px 12px; border-bottom: 1px solid #dde6f0;
+      font-size: 10pt;
+    }
+    .integrantes tr:nth-child(even) td { background: #f4f7fc; }
+
+    .portada footer-note {
+      font-size: 9pt; color: #888;
+    }
+
+    /* ── Secciones internas ── */
+    .section-title {
+      font-size: 15pt;
+      color: #1f3864;
+      border-bottom: 2px solid #2e75b6;
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+      margin-top: 28px;
+    }
+
+    .section-title:first-of-type { margin-top: 0; }
+
+    h3 {
+      font-size: 11pt;
+      color: #2e75b6;
+      margin: 16px 0 6px;
+    }
+
+    p { margin-bottom: 10px; }
+
+    /* ── GitGraph ── */
+    .gitgraph {
+      font-family: 'Courier New', monospace;
+      font-size: 9pt;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px 18px;
+      border-radius: 6px;
+      line-height: 1.7;
+      margin: 12px 0;
+      overflow-x: auto;
+    }
+
+    .git-main    { color: #38bdf8; font-weight: bold; }
+    .git-html    { color: #4ade80; font-weight: bold; }
+    .git-css     { color: #f59e0b; font-weight: bold; }
+    .git-js      { color: #f87171; font-weight: bold; }
+    .git-commit  { color: #94a3b8; }
+    .git-merge   { color: #c084fc; }
+    .git-tag     { color: #fde68a; }
+
+    /* ── Tabla ── */
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+      margin: 10px 0 16px;
+    }
+
+    table.data th {
+      background: #1f3864;
+      color: white;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    table.data td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #dde6f0;
+    }
+
+    table.data tr:nth-child(even) td { background: #f4f7fc; }
+
+    /* ── Screenshot placeholder ── */
+    .screenshot {
+      border: 2px dashed #aac4e0;
+      border-radius: 6px;
+      background: #f0f5fb;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5a7fa8;
+      font-size: 10pt;
+      text-align: center;
+      padding: 14px;
+      margin: 10px 0 16px;
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 10px 0 16px;
+    }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 9pt;
+      font-weight: 600;
+    }
+    .badge-html { background: #dcfce7; color: #166534; }
+    .badge-css  { background: #fef9c3; color: #713f12; }
+    .badge-js   { background: #fee2e2; color: #991b1b; }
+    .badge-lead { background: #dbeafe; color: #1e40af; }
+
+    /* ── Conflicto ── */
+    .conflict-box {
+      background: #fff7ed;
+      border-left: 4px solid #f59e0b;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 10px 0;
+      font-size: 10pt;
+    }
+
+    .code {
+      font-family: 'Courier New', monospace;
+      font-size: 9pt;
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    .code .c-head  { color: #38bdf8; }
+    .code .c-sep   { color: #94a3b8; }
+    .code .c-tail  { color: #4ade80; }
+    .code .c-del   { color: #f87171; }
+    .code .c-add   { color: #4ade80; }
+
+    /* ── Conclusión ── */
+    .conclusion {
+      background: #f0f5fb;
+      border-radius: 8px;
+      padding: 18px 22px;
+      border-left: 4px solid #2e75b6;
+      font-size: 10.5pt;
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    /* ── Print button ── */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1f3864;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 13pt;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .print-btn:hover { background: #2e75b6; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ PÁGINA 1 — PORTADA ════════════ -->
+<div class="page">
+  <div class="portada">
+
+    <div class="inst-header">
+      <strong>INGENIERÍA EN DESARROLLO Y GESTIÓN DE SOFTWARE</strong><br>
+      <p>Desarrollo Web Integral &nbsp;|&nbsp; Catedrático: Ing. Cristian Francisco Vargas Zamudio</p>
+    </div>
+
+    <h1>REPORTE DE EQUIPO</h1>
+    <h2>Práctica de Cierre — Unidad II: Control de Versiones</h2>
+
+    <div class="ficha">
+      <table>
+        <tr><td>Materia</td><td>Desarrollo Web Integral</td></tr>
+        <tr><td>Unidad</td><td>II. Control de Versiones</td></tr>
+        <tr><td>Grupo</td><td><!-- AGREGA TU GRUPO AQUÍ --></td></tr>
+        <tr><td>Fecha</td><td>23 de junio de 2026</td></tr>
+        <tr><td>Repositorio</td><td>github.com/A1ex9915/practica_git</td></tr>
+      </table>
+    </div>
+
+    <div class="integrantes">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>GitHub</th>
+            <th>Archivo principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alex Alvarado</td>
+            <td><span class="badge badge-lead">Líder / CSS</span></td>
+            <td>@A1ex9915</td>
+            <td>style.css · coordinación</td>
+          </tr>
+          <tr>
+            <td>Evelyn Olguin</td>
+            <td><span class="badge badge-html">HTML</span></td>
+            <td>@EvelynOlguin01</td>
+            <td>index.html</td>
+          </tr>
+          <tr>
+            <td>Jovani / Angel</td>
+            <td><span class="badge badge-js">JavaScript</span></td>
+            <td>@AngelBM</td>
+            <td>script.js</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════ PÁGINA 2 — FLUJO DE TRABAJO ════════════ -->
+<div class="page">
+
+  <h2 class="section-title">Flujo de Trabajo Git</h2>
+
+  <h3>Estrategia de ramas (GitHub Flow)</h3>
+  <p>
+    El equipo siguió el flujo <strong>GitHub Flow</strong>: cada integrante creó una rama
+    <code>feature/[rol]-[apellido]</code> desde <code>main</code>, realizó sus commits con
+    <em>Conventional Commits</em> y abrió un Pull Request con el Líder como revisor.
+    Los merges se hicieron en orden: HTML → CSS → JS.
+  </p>
+
+  <h3>Diagrama de ramas y merges</h3>
+  <div class="gitgraph">
+<span class="git-main">main</span>          <span class="git-commit">●  60d057f  Initial commit</span>
+                 <span class="git-commit">│</span>
+                 <span class="git-commit">●  012af30  docs: agrega CHANGELOG.md (Líder)</span>
+                 <span class="git-commit">│╲</span>
+<span class="git-html">feat/html-olguin</span>  <span class="git-commit">│ ●  370ea9a  feat: agrega sección portafolio</span>
+                 <span class="git-commit">│ ●  a7803e5  feat: agrega formulario de contacto</span>
+                 <span class="git-commit">│ ●  67fb8ee  fix: corrige accesibilidad en imágenes</span>
+                 <span class="git-commit">│╱  343cf1d  Merge PR #3 ← HTML</span>
+                 <span class="git-commit">│╲</span>
+<span class="git-css">feat/css-alvarado</span> <span class="git-commit">│ ●  f580e75  style: variables CSS en :root</span>
+                 <span class="git-commit">│ ●  9a750d8  style: media queries tablet/móvil</span>
+                 <span class="git-commit">│ ●  7b586a5  style: transiciones hover portafolio</span>
+                 <span class="git-commit">│ ●  d0620e7  style: estilos formulario contacto</span>
+                 <span class="git-commit">│╱  02fda67  Merge PR #4 ← CSS</span>
+                 <span class="git-commit">│╲</span>
+<span class="git-js">feat/js-meza</span>      <span class="git-commit">│ ●  ed7e271  feat: validación campos vacíos</span>
+                 <span class="git-commit">│ ●  2437c96  feat: validación email con regex</span>
+                 <span class="git-commit">│ ●  37c9fb4  feat: localStorage mensajes</span>
+                 <span class="git-commit">│ ●  d535c80  feat: bonus mensajes + ⚠️ conflicto footer</span>
+                 <span class="git-commit">│ ●  d60cfdb  fix: resuelve conflicto footer JS↔main</span>
+                 <span class="git-commit">│╱  5b73506  Merge PR #5 ← JS</span>
+                 <span class="git-commit">●</span>
+<span class="git-main">main </span><span class="git-tag">[HEAD]</span>    <span class="git-commit">≥ 29 commits en total</span>
+  </div>
+
+  <h3>Orden de merges de los Pull Requests</h3>
+  <table class="data">
+    <thead>
+      <tr><th>#</th><th>PR</th><th>Rama origen</th><th>Resultado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PR #3</td><td>[HTML] Sección portafolio y formulario</td><td>feature/html-olguin</td><td>Merge limpio</td></tr>
+      <tr><td>PR #4</td><td>[CSS] Variables, media queries y transiciones</td><td>feature/css-alvarado</td><td>Merge limpio</td></tr>
+      <tr><td>PR #5</td><td>[JS] Validación y localStorage</td><td>feature/js-meza</td><td>Conflicto resuelto</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Resolución del conflicto simulado</h3>
+  <div class="conflict-box">
+    <strong>Causa:</strong> El integrante JS modificó el <code>&lt;footer&gt;</code> en su rama, pero
+    <code>main</code> ya tenía una versión diferente del footer después del merge de HTML.
+    Git no pudo resolver automáticamente la diferencia de texto.
+  </div>
+
+  <p>Los marcadores de conflicto encontrados en <code>index.html</code>:</p>
+  <div class="code">
+<span class="c-head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (main)</span>
+  &lt;p&gt;© 2026 Equipo 7 | Página de presentación...&lt;/p&gt;
+<span class="c-sep">=======</span>
+  &lt;p&gt;© 2026 - Portal del Equipo 7. Todos los derechos reservados.&lt;/p&gt;
+<span class="c-tail">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/js-meza</span>
+  </div>
+
+  <p>
+    El Líder (Alex) y el integrante JS resolvieron juntos el conflicto editando manualmente
+    el archivo, eliminando los marcadores y conservando la versión del PR de JS.
+    Se confirmó la resolución con el commit:
+    <code>fix: resuelve conflicto en footer entre rama JS y main</code>.
+  </p>
+
+</div>
+
+
+<!-- ════════════ PÁGINA 3 — EVIDENCIA TÉCNICA ════════════ -->
+<div class="page">
+
+  <h2 class="section-title">Evidencia Técnica</h2>
+
+  <h3>Sitio en desktop (pantalla completa)</h3>
+  <div class="screenshot">
+    📸 Insertar captura: abrir <strong>index.html</strong> en el navegador en pantalla completa<br>
+    (mostrar las secciones: Hero, Equipo, Portafolio, Contacto)
+  </div>
+
+  <h3>Sitio en vista móvil (DevTools)</h3>
+  <div class="screenshot">
+    📸 Insertar captura: F12 → Toggle device toolbar → iPhone o 375px de ancho<br>
+    (verificar que las tarjetas se apilen en 1 columna)
+  </div>
+
+  <h3>Formulario validando campos</h3>
+  <div class="screenshot-grid">
+    <div class="screenshot">
+      📸 Formulario con error:<br>intentar enviar con campos vacíos<br>
+      (mensaje: "Por favor completa todos los campos.")
+    </div>
+    <div class="screenshot">
+      📸 Formulario con éxito:<br>llenar campos y enviar correctamente<br>
+      (mensaje: "¡Mensaje enviado correctamente! ✅")
+    </div>
+  </div>
+
+  <h3>localStorage en DevTools</h3>
+  <div class="screenshot">
+    📸 Insertar captura: F12 → Application → Storage → Local Storage → localhost<br>
+    (debe verse la clave <strong>mensajes-contacto</strong> con el JSON del mensaje enviado)
+  </div>
+
+  <h3>Funcionalidades implementadas</h3>
+  <table class="data">
+    <thead>
+      <tr><th>Rol</th><th>Funcionalidad</th><th>Archivo</th><th>Estado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="badge badge-html">HTML</span></td><td>Sección portafolio con 3 tarjetas semánticas</td><td>index.html</td><td>✅ Completo</td></tr>
+      <tr><td><span class="badge badge-html">HTML</span></td><td>Formulario de contacto accesible</td><td>index.html</td><td>✅ Completo</td></tr>
+      <tr><td><span class="badge badge-css">CSS</span></td><td>Variables CSS en :root</td><td>style.css</td><td>✅ Completo</td></tr>
+      <tr><td><span class="badge badge-css">CSS</span></td><td>Media queries tablet (768px) y móvil (480px)</td><td>style.css</td><td>✅ Completo</td></tr>
+      <tr><td><span class="badge badge-css">CSS</span></td><td>Transiciones hover y efectos focus en form</td><td>style.css</td><td>✅ Completo</td></tr>
+      <tr><td><span class="badge badge-js">JS</span></td><td>Validación de campos vacíos + regex email</td><td>script.js</td><td>✅ Completo</td></tr>
+      <tr><td><span class="badge badge-js">JS</span></td><td>Guardar mensajes en localStorage</td><td>script.js</td><td>✅ Completo</td></tr>
+      <tr><td><span class="badge badge-js">JS</span></td><td>Bonus: mostrar mensajes en div dinámico</td><td>script.js</td><td>✅ +0.5 pts</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<!-- ════════════ PÁGINA 4 — EVIDENCIA GIT ════════════ -->
+<div class="page">
+
+  <h2 class="section-title">Evidencia Git</h2>
+
+  <h3>Historial de commits — git log</h3>
+  <div class="screenshot">
+    📸 Insertar captura de terminal con el resultado de:<br>
+    <strong>git log --oneline --graph --all</strong><br>
+    (guardar también como <code>docs/git-log.png</code>)
+  </div>
+
+  <h3>Commits por integrante</h3>
+  <table class="data">
+    <thead>
+      <tr><th>Integrante</th><th>Commits principales</th><th>Convención</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alex Alvarado<br><small>@A1ex9915</small></td>
+        <td>
+          docs: CHANGELOG.md · docs: README + docs/<br>
+          style: variables CSS · style: media queries<br>
+          style: transiciones · style: form styles
+        </td>
+        <td>✅ Conventional Commits</td>
+      </tr>
+      <tr>
+        <td>Evelyn Olguin<br><small>@EvelynOlguin01</small></td>
+        <td>
+          feat: sección portafolio · feat: formulario HTML<br>
+          fix: accesibilidad imágenes<br>
+          style: ajustes de tonos (Evelyn)
+        </td>
+        <td>✅ Conventional Commits</td>
+      </tr>
+      <tr>
+        <td>Jovani / Angel<br><small>@AngelBM</small></td>
+        <td>
+          feat: validación campos · feat: regex email<br>
+          feat: localStorage · feat: bonus mensajes<br>
+          fix: conflicto footer
+        </td>
+        <td>✅ Conventional Commits</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Pull Requests en GitHub</h3>
+  <div class="screenshot-grid">
+    <div class="screenshot">
+      📸 Captura del PR #3 (HTML)<br>
+      con comentario de revisión del Líder
+    </div>
+    <div class="screenshot">
+      📸 Captura del PR #4 (CSS)<br>
+      con comentario de revisión del Líder
+    </div>
+  </div>
+  <div class="screenshot">
+    📸 Captura del PR #5 (JS) mostrando el conflicto detectado por GitHub<br>
+    y/o la pantalla de resolución
+  </div>
+
+  <h3>Resolución del conflicto en terminal</h3>
+  <div class="screenshot">
+    📸 Insertar captura de terminal mostrando:<br>
+    <code>git pull origin main</code> → CONFLICT detectado<br>
+    <code>git add index.html</code> → <code>git commit -m "fix: resuelve conflicto..."</code><br>
+    <code>git push origin feature/js-meza</code>
+  </div>
+
+</div>
+
+
+<!-- ════════════ PÁGINA 5 — CONCLUSIÓN ════════════ -->
+<div class="page">
+
+  <h2 class="section-title">Conclusión de Equipo</h2>
+
+  <div class="conclusion">
+    <p>
+      Durante el desarrollo de esta práctica, el Equipo 7 aplicó de manera integral los conceptos
+      de control de versiones aprendidos en la Unidad II. Trabajar con ramas individuales bajo
+      la convención <strong>GitHub Flow</strong> nos permitió que cada integrante avanzara de forma
+      independiente sin interferir en el trabajo de los demás, manteniendo <code>main</code>
+      siempre estable.
+    </p>
+    <p>
+      La revisión de Pull Requests fue una experiencia enriquecedora: antes de integrar cualquier
+      cambio al proyecto principal, el Líder revisó el código de cada compañero, dejó comentarios
+      técnicos y validó que las funcionalidades estuvieran completas. Este proceso nos dio una
+      visión real de cómo trabajan los equipos de desarrollo profesional.
+    </p>
+    <p>
+      El momento más desafiante fue la <strong>resolución del conflicto de merge</strong> en el
+      <code>index.html</code>. Al principio, ejecutamos los comandos sin revisar manualmente el
+      archivo, lo que resultó en un commit con los marcadores de conflicto (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>)
+      todavía presentes. Al detectar el error, lo corregimos revisando el archivo línea por línea,
+      tomando una decisión en conjunto sobre qué versión del footer conservar y haciendo un nuevo
+      commit con la resolución correcta. Esta experiencia nos enseñó la importancia de verificar
+      siempre el archivo antes de hacer <code>git add</code>.
+    </p>
+    <p>
+      En general, el uso de <strong>Conventional Commits</strong> (<code>feat:</code>,
+      <code>style:</code>, <code>fix:</code>, <code>docs:</code>) hizo que el historial del
+      repositorio fuera legible y profesional. Poder ver con <code>git log --oneline --graph --all</code>
+      las ramas divergiendo y convergiendo en <code>main</code> fue una representación visual
+      muy clara del trabajo colaborativo que realizamos como equipo.
+    </p>
+  </div>
+
+  <br>
+
+  <h2 class="section-title">Checklist de Criterios de Éxito</h2>
+  <table class="data">
+    <thead>
+      <tr><th>Criterio</th><th>Estado</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>main tiene ≥ 12 commits en total</td><td>✅ 29 commits</td></tr>
+      <tr><td>3 Pull Requests cerrados con comentarios del Líder</td><td>✅ PRs #3, #4, #5</td></tr>
+      <tr><td>Todos los integrantes tienen commits propios</td><td>✅ A1ex9915 · EvelynOlguin01 · AngelBM</td></tr>
+      <tr><td>Sección #portafolio con ≥ 2 tarjetas de proyecto</td><td>✅ 3 tarjetas</td></tr>
+      <tr><td>Formulario valida campos vacíos y formato de email</td><td>✅ Con regex</td></tr>
+      <tr><td>localStorage guarda mensajes enviados</td><td>✅ Verificable en DevTools</td></tr>
+      <tr><td>Sitio responsivo en móvil</td><td>✅ 2 breakpoints (768px y 480px)</td></tr>
+      <tr><td>Conflicto resuelto con commit descriptivo</td><td>✅ fix: resuelve conflicto...</td></tr>
+      <tr><td>README.md con instrucciones SSH</td><td>✅ git@github.com:A1ex9915/practica_git.git</td></tr>
+      <tr><td>CHANGELOG.md versión 2.0.0 completo</td><td>✅ Con Added y Changed</td></tr>
+      <tr><td>Bonus JS: mostrar mensajes en div dinámico</td><td>✅ +0.5 pts</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- Botón de impresión -->
+<button class="print-btn no-print" onclick="window.print()">🖨️ Guardar como PDF</button>
+
+</body>
+</html>
