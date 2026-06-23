@@ -226,6 +226,7 @@ footer {
   }
 }
 
+/* Tablet — máx. 768px */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -244,11 +245,43 @@ footer {
     font-size: 17px;
   }
 
-  .team-cards {
+  .team-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .portafolio-grid {
     grid-template-columns: 1fr 1fr;
   }
 
   .proyecto-card {
     flex-direction: column;
+  }
+}
+
+/* Móvil — máx. 480px */
+@media (max-width: 480px) {
+  .team-section {
+    grid-template-columns: 1fr;
+  }
+
+  .portafolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 15px;
   }
 }
