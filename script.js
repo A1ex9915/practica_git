@@ -44,9 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    mostrarMensaje('Procesando...', 'exito');
+    guardarEnStorage({ nombre, email, mensaje });
+    mostrarMensaje('¡Mensaje enviado correctamente! ✅', 'exito');
+    form.reset();
   });
 });
+
+function guardarEnStorage(datos) {
+  const mensajes = JSON.parse(localStorage.getItem('mensajes-contacto')) || [];
+  datos.fecha = new Date().toLocaleString('es-MX');
+  mensajes.push(datos);
+  localStorage.setItem('mensajes-contacto', JSON.stringify(mensajes));
+}
 
 function validarEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
