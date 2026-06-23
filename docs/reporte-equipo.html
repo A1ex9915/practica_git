@@ -296,7 +296,7 @@
         <tr><td>Unidad</td><td>II. Control de Versiones</td></tr>
         <tr><td>Grupo</td><td><!-- AGREGA TU GRUPO AQUÍ --></td></tr>
         <tr><td>Fecha</td><td>23 de junio de 2026</td></tr>
-        <tr><td>Repositorio</td><td>github.com/A1ex9915/practica_git</td></tr>
+        <tr><td>Repositorio</td><td><a href="https://github.com/A1ex9915/practica_git" style="color:#2e75b6">github.com/A1ex9915/practica_git</a></td></tr>
       </table>
     </div>
 
@@ -424,33 +424,36 @@
   <h2 class="section-title">Evidencia Técnica</h2>
 
   <h3>Sitio en desktop (pantalla completa)</h3>
-  <div class="screenshot">
-    📸 Insertar captura: abrir <strong>index.html</strong> en el navegador en pantalla completa<br>
-    (mostrar las secciones: Hero, Equipo, Portafolio, Contacto)
-  </div>
+  <img src="img_capturas/vista_principal.png" alt="Sitio web Equipo 7 en vista desktop" class="cap-img">
+  <p class="cap-label">Sitio en desktop — sección Contáctanos con formulario y botón "Ver mensajes enviados"</p>
 
   <h3>Sitio en vista móvil (DevTools)</h3>
-  <div class="screenshot">
-    📸 Insertar captura: F12 → Toggle device toolbar → iPhone o 375px de ancho<br>
-    (verificar que las tarjetas se apilen en 1 columna)
-  </div>
+  <img src="img_capturas/vista_phone.png" alt="Sitio web Equipo 7 en vista móvil" class="cap-img">
+  <p class="cap-label">Vista móvil — formulario responsivo en 1 columna, footer con texto actualizado</p>
 
   <h3>Formulario validando campos</h3>
   <div class="screenshot-grid">
-    <div class="screenshot">
-      📸 Formulario con error:<br>intentar enviar con campos vacíos<br>
-      (mensaje: "Por favor completa todos los campos.")
+    <div>
+      <img src="img_capturas/datos_vacios.png" alt="Formulario con error de validación" class="cap-img-sm">
+      <p class="cap-label">Campos vacíos → "Por favor completa todos los campos."</p>
     </div>
-    <div class="screenshot">
-      📸 Formulario con éxito:<br>llenar campos y enviar correctamente<br>
-      (mensaje: "¡Mensaje enviado correctamente! ✅")
+    <div>
+      <img src="img_capturas/datos_enviados.png" alt="Formulario enviado con éxito y mensajes guardados" class="cap-img-sm">
+      <p class="cap-label">Envío exitoso + BONUS: mensajes guardados mostrados en pantalla</p>
     </div>
   </div>
 
-  <h3>localStorage en DevTools</h3>
-  <div class="screenshot">
-    📸 Insertar captura: F12 → Application → Storage → Local Storage → localhost<br>
-    (debe verse la clave <strong>mensajes-contacto</strong> con el JSON del mensaje enviado)
+  <h3>localStorage — mensajes guardados (BONUS)</h3>
+  <p>
+    La captura anterior muestra el funcionamiento del localStorage: al hacer clic en
+    <strong>"Ver mensajes enviados"</strong>, el script recupera los datos de
+    <code>localStorage.getItem('mensajes-contacto')</code> y los despliega en un
+    <code>&lt;div&gt;</code> dinámico. Se observan 2 mensajes enviados con nombre, correo,
+    contenido y fecha guardados correctamente.
+  </p>
+  <div class="screenshot" style="min-height:60px; font-size:10pt;">
+    ⚠️ CAPTURA PENDIENTE (opcional para reforzar evidencia):<br>
+    F12 → Application → Local Storage → localhost → clave <strong>mensajes-contacto</strong>
   </div>
 
   <h3>Funcionalidades implementadas</h3>
@@ -544,12 +547,9 @@
     </div>
   </div>
 
-  <p><strong>PR #5 — JS (feature/js-meza) con conflicto:</strong></p>
-  <div class="screenshot">
-    ⚠️ FALTA CAPTURA<br>
-    Ir a GitHub → Pull requests → PR #5 cerrado<br>
-    Tomar captura mostrando el mensaje de conflicto detectado y/o el comentario del Líder
-  </div>
+  <p><strong>PR #5 — JS (feature/js-meza) — merged con resolución de conflicto:</strong></p>
+  <img src="img_capturas/pull_requet_ conflicto.png" alt="PR #5 JS merged con commits de resolución de conflicto" class="cap-img">
+  <p class="cap-label">PR #5 cerrado — 6 commits incluidos los dos fix: resuelve conflicto en footer · merged por A1ex9915</p>
 
   <h3>Resolución del conflicto en terminal</h3>
   <img src="img_capturas/conflicto_pr.png" alt="Terminal mostrando resolución del conflicto" class="cap-img">
