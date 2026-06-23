@@ -25,6 +25,8 @@ cards.forEach(card => {
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('form-contacto');
 
+  mostrarMensajeAutor();
+
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
@@ -49,6 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
     form.reset();
   });
 });
+
+function mostrarMensajeAutor() {
+  const hero = document.querySelector('.hero');
+  if (!hero || hero.querySelector('.autor-badge')) return;
+
+  const badge = document.createElement('div');
+  badge.className = 'autor-badge';
+  badge.textContent = 'Actualización dinámica hecha por Ángel';
+  badge.style.cssText = 'display:inline-block; margin-top:16px; padding:8px 14px; border-radius:999px; background:rgba(56, 189, 248, 0.15); color:#7dd3fc; border:1px solid rgba(125, 211, 252, 0.35); font-size:0.95rem; font-weight:600;';
+
+  hero.appendChild(badge);
+}
 
 function guardarEnStorage(datos) {
   const mensajes = JSON.parse(localStorage.getItem('mensajes-contacto')) || [];
