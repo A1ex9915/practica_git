@@ -39,6 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    if (!validarEmail(email)) {
+      mostrarMensaje('Escribe un correo electrónico válido.', 'error');
+      return;
+    }
+
     mostrarMensaje('Procesando...', 'exito');
   });
 });
+
+function validarEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+function mostrarMensaje(texto, tipo) {
+  const el = document.getElementById('msg-respuesta');
+  el.textContent = texto;
+  el.className = tipo === 'error' ? 'msg-error' : 'msg-exito';
+}
