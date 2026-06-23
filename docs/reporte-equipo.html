@@ -235,6 +235,30 @@
       margin-top: 10px;
     }
 
+    /* ── Imágenes reales ── */
+    .cap-img {
+      width: 100%;
+      border: 1px solid #c5d5e8;
+      border-radius: 6px;
+      display: block;
+      margin: 8px 0 16px;
+    }
+
+    .cap-img-sm {
+      width: 100%;
+      border: 1px solid #c5d5e8;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .cap-label {
+      font-size: 9pt;
+      color: #5a7fa8;
+      text-align: center;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
     /* ── Print button ── */
     .print-btn {
       position: fixed;
@@ -388,6 +412,9 @@
     <code>fix: resuelve conflicto en footer entre rama JS y main</code>.
   </p>
 
+  <img src="img_capturas/conflicto_pr.png" alt="Terminal mostrando el conflicto detectado y su resolución" class="cap-img">
+  <p class="cap-label">Captura real — Terminal: git pull origin main → CONFLICT detectado → commit de resolución → git push</p>
+
 </div>
 
 
@@ -451,12 +478,13 @@
 
   <h2 class="section-title">Evidencia Git</h2>
 
-  <h3>Historial de commits — git log</h3>
-  <div class="screenshot">
-    📸 Insertar captura de terminal con el resultado de:<br>
-    <strong>git log --oneline --graph --all</strong><br>
-    (guardar también como <code>docs/git-log.png</code>)
-  </div>
+  <h3>Historial de commits — git log --oneline --graph --all</h3>
+  <img src="img_capturas/git_log1 (1).png" alt="git log parte 1" class="cap-img">
+  <img src="img_capturas/git_log1 (2).png" alt="git log parte 2" class="cap-img">
+  <img src="img_capturas/git_log1 (3).png" alt="git log parte 3" class="cap-img">
+  <img src="img_capturas/git_log1 (4).png" alt="git log parte 4" class="cap-img">
+  <img src="img_capturas/git_log1 (5).png" alt="git log parte 5" class="cap-img">
+  <p class="cap-label">Historial completo — 29 commits con ramas feature/html-olguin, feature/css-alvarado y feature/js-meza</p>
 
   <h3>Commits por integrante</h3>
   <table class="data">
@@ -495,28 +523,37 @@
   </table>
 
   <h3>Pull Requests en GitHub</h3>
+
+  <p><strong>Vista general del repositorio con las 3 ramas listas para PR:</strong></p>
+  <img src="img_capturas/pull_request.png" alt="Repositorio GitHub mostrando las 3 ramas feature" class="cap-img">
+  <p class="cap-label">github.com/A1ex9915/practica_git — las 3 ramas con botón "Compare &amp; pull request"</p>
+
   <div class="screenshot-grid">
-    <div class="screenshot">
-      📸 Captura del PR #3 (HTML)<br>
-      con comentario de revisión del Líder
+    <div>
+      <p><strong>PR #3 — HTML (feature/html-olguin):</strong></p>
+      <img src="img_capturas/pull_request_olguin.png" alt="PR #3 HTML con 3 commits" class="cap-img-sm">
+      <p class="cap-label">PR #3 abierto con 3 commits — feat: portafolio · feat: contacto · fix: accesibilidad</p>
     </div>
-    <div class="screenshot">
-      📸 Captura del PR #4 (CSS)<br>
-      con comentario de revisión del Líder
+    <div>
+      <p><strong>PR #4 — CSS (feature/css-alvarado):</strong></p>
+      <div class="screenshot" style="min-height:120px">
+        ⚠️ FALTA CAPTURA<br>
+        Ir a GitHub → Pull requests → PR #4 cerrado<br>
+        Tomar captura mostrando los 4 commits y el comentario del Líder
+      </div>
     </div>
   </div>
+
+  <p><strong>PR #5 — JS (feature/js-meza) con conflicto:</strong></p>
   <div class="screenshot">
-    📸 Captura del PR #5 (JS) mostrando el conflicto detectado por GitHub<br>
-    y/o la pantalla de resolución
+    ⚠️ FALTA CAPTURA<br>
+    Ir a GitHub → Pull requests → PR #5 cerrado<br>
+    Tomar captura mostrando el mensaje de conflicto detectado y/o el comentario del Líder
   </div>
 
   <h3>Resolución del conflicto en terminal</h3>
-  <div class="screenshot">
-    📸 Insertar captura de terminal mostrando:<br>
-    <code>git pull origin main</code> → CONFLICT detectado<br>
-    <code>git add index.html</code> → <code>git commit -m "fix: resuelve conflicto..."</code><br>
-    <code>git push origin feature/js-meza</code>
-  </div>
+  <img src="img_capturas/conflicto_pr.png" alt="Terminal mostrando resolución del conflicto" class="cap-img">
+  <p class="cap-label">Terminal — git pull origin main → CONFLICT (content): Merge conflict in index.html → commit fix → git push</p>
 
 </div>
 
