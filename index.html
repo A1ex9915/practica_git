@@ -16,6 +16,7 @@
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#equipo">Integrantes</a>
+      <a href="#portafolio">Portafolio</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
@@ -89,7 +90,61 @@
     </p>
   </div>
 
-  <footer id="contacto">
+  <section id="portafolio" aria-labelledby="titulo-portafolio">
+    <h2 id="titulo-portafolio">Nuestro Portafolio</h2>
+    <p>Proyectos desarrollados por el Equipo 7 durante el ciclo escolar.</p>
+
+    <div class="portafolio-grid">
+      <article class="proyecto-card">
+        <figure>
+          <img src="img/proyecto1.png" alt="Captura de pantalla del Portal Web del Equipo 7 mostrando las tarjetas de integrantes">
+          <figcaption>Portal Web Equipo 7</figcaption>
+        </figure>
+        <h3>Portal de Presentación</h3>
+        <p>Sitio web colaborativo construido con HTML, CSS y JavaScript usando control de versiones con Git y GitHub.</p>
+        <a href="#" class="btn-ver">Ver proyecto</a>
+      </article>
+
+      <article class="proyecto-card">
+        <figure>
+          <img src="img/proyecto2.png" alt="Captura de pantalla del Sistema de Inventarios con tabla de productos">
+          <figcaption>Sistema de Inventarios</figcaption>
+        </figure>
+        <h3>Sistema de Inventarios</h3>
+        <p>Aplicación web para gestión de inventarios con base de datos MySQL y backend en PHP con Laravel.</p>
+        <a href="#" class="btn-ver">Ver proyecto</a>
+      </article>
+
+      <article class="proyecto-card">
+        <figure>
+          <img src="img/proyecto3.png" alt="Captura de pantalla de la App de Gestión de Tareas con lista de pendientes">
+          <figcaption>App de Gestión de Tareas</figcaption>
+        </figure>
+        <h3>App de Gestión de Tareas</h3>
+        <p>Aplicación de gestión de tareas con JavaScript DOM, almacenamiento local y diseño responsivo.</p>
+        <a href="#" class="btn-ver">Ver proyecto</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="contacto" aria-labelledby="titulo-contacto">
+    <h2 id="titulo-contacto">Contáctanos</h2>
+    <form id="form-contacto" novalidate>
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+
+      <button type="submit">Enviar</button>
+      <p id="msg-respuesta" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <footer>
     <p>© 2026 Equipo 7 | Página de presentación desarrollada con HTML, CSS y JavaScript</p>
   </footer>
 
