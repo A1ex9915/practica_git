@@ -1,14 +1,24 @@
+:root {
+  --color-primario: #0f172a;
+  --color-acento: #38bdf8;
+  --color-fondo: #1e293b;
+  --color-texto: #e2e8f0;
+  --fuente-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --radio-borde: 8px;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--fuente-base);
 }
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a, #1e293b, #312e81);
-  color: white;
+  background: linear-gradient(135deg, var(--color-primario), var(--color-fondo), #312e81);
+  color: var(--color-texto);
   overflow-x: hidden;
 }
 
@@ -26,11 +36,11 @@ header {
 }
 
 .logo span {
-  color: #38bdf8;
+  color: var(--color-acento);
 }
 
 nav a {
-  color: white;
+  color: var(--color-texto);
   text-decoration: none;
   margin-left: 25px;
   font-weight: 500;
@@ -38,7 +48,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #38bdf8;
+  color: var(--color-acento);
 }
 
 .hero {
@@ -53,7 +63,7 @@ nav a:hover {
 }
 
 .hero h1 span {
-  color: #38bdf8;
+  color: var(--color-acento);
 }
 
 .hero p {
@@ -70,13 +80,13 @@ nav a:hover {
   padding: 14px 35px;
   border: none;
   border-radius: 30px;
-  background: #38bdf8;
-  color: #0f172a;
+  background: var(--color-acento);
+  color: var(--color-primario);
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  box-shadow: var(--sombra);
 }
 
 .btn:hover {
@@ -108,7 +118,7 @@ nav a:hover {
   position: absolute;
   width: 120px;
   height: 120px;
-  background: #38bdf8;
+  background: var(--color-acento);
   border-radius: 50%;
   top: -40px;
   right: -40px;
@@ -124,7 +134,7 @@ nav a:hover {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  background: linear-gradient(135deg, var(--color-acento), #818cf8);
   margin: 0 auto 20px;
   display: flex;
   align-items: center;
@@ -141,7 +151,7 @@ nav a:hover {
 }
 
 .role {
-  color: #38bdf8;
+  color: var(--color-acento);
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -216,6 +226,174 @@ footer {
   }
 }
 
+/* ===== SECCIÓN PORTAFOLIO ===== */
+#portafolio {
+  padding: 60px 8%;
+  text-align: center;
+}
+
+#portafolio h2 {
+  font-size: 36px;
+  color: var(--color-acento);
+  margin-bottom: 10px;
+}
+
+#portafolio > p {
+  color: #cbd5e1;
+  margin-bottom: 40px;
+}
+
+.portafolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.proyecto-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radio-borde);
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.proyecto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+}
+
+.proyecto-card figure {
+  margin-bottom: 15px;
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.proyecto-card figure img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.proyecto-card figcaption {
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+  padding: 6px 0;
+}
+
+.proyecto-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--color-acento);
+}
+
+.proyecto-card p {
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.btn-ver {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn-ver:hover {
+  background-color: #7dd3fc;
+  transform: scale(1.05);
+}
+
+/* ===== SECCIÓN CONTACTO ===== */
+#contacto {
+  padding: 60px 8%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#contacto h2 {
+  font-size: 36px;
+  color: var(--color-acento);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#form-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#form-contacto label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+#form-contacto input,
+#form-contacto textarea {
+  padding: 12px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radio-borde);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-texto);
+  font-size: 15px;
+  font-family: var(--fuente-base);
+  transition: border-color 0.2s ease;
+  resize: vertical;
+}
+
+#form-contacto input:focus,
+#form-contacto textarea:focus {
+  border-color: var(--color-acento);
+  outline: none;
+  background: rgba(56, 189, 248, 0.05);
+}
+
+#form-contacto button[type="submit"] {
+  padding: 13px;
+  border: none;
+  border-radius: var(--radio-borde);
+  background: var(--color-acento);
+  color: var(--color-primario);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+#form-contacto button[type="submit"]:hover {
+  background: #7dd3fc;
+  transform: scale(1.02);
+}
+
+.msg-error {
+  color: #f87171;
+  font-size: 14px;
+  text-align: center;
+}
+
+.msg-exito {
+  color: #4ade80;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Tablet — máx. 768px */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -232,5 +410,45 @@ footer {
 
   .hero p {
     font-size: 17px;
+  }
+
+  .team-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .portafolio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proyecto-card {
+    flex-direction: column;
+  }
+}
+
+/* Móvil — máx. 480px */
+@media (max-width: 480px) {
+  .team-section {
+    grid-template-columns: 1fr;
+  }
+
+  .portafolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 15px;
   }
 }
