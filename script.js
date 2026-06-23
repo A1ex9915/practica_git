@@ -57,6 +57,30 @@ function guardarEnStorage(datos) {
   localStorage.setItem('mensajes-contacto', JSON.stringify(mensajes));
 }
 
+function verMensajesGuardados() {
+  const mensajes = JSON.parse(localStorage.getItem('mensajes-contacto')) || [];
+  const contenedor = document.getElementById('lista-mensajes');
+
+  if (!contenedor) return;
+
+  if (mensajes.length === 0) {
+    contenedor.innerHTML = '<p style="color:#94a3b8">No hay mensajes guardados.</p>';
+    contenedor.style.display = 'block';
+    return;
+  }
+
+  const html = mensajes.map((m, i) =>
+    `<div class="mensaje-guardado">
+      <strong>${i + 1}. ${m.nombre}</strong> — ${m.email}<br>
+      <em>${m.mensaje}</em><br>
+      <small>${m.fecha}</small>
+    </div>`
+  ).join('');
+
+  contenedor.innerHTML = html;
+  contenedor.style.display = 'block';
+}
+
 function validarEmail(email) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
